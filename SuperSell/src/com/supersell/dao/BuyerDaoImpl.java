@@ -44,7 +44,7 @@ public class BuyerDaoImpl  implements BuyerDao{
 		String message = "Not logined in";
 		
 		try (Connection conn = DBUtil.provideConnection()){
-			 PreparedStatement  ps =  conn.prepareStatement("select * from buyer where email = ? AND password =?");
+			 PreparedStatement  ps =  conn.prepareStatement("select * from buyer where bemail = ? AND password =?");
 			 ps.setString(1, username);
 			 ps.setString(2, password);
 			 
