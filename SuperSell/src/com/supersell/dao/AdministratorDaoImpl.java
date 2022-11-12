@@ -4,6 +4,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.List;
 
 import com.supersell.exception.AdministratorException;
@@ -16,10 +17,10 @@ public class AdministratorDaoImpl   implements AdministratorDao{
 	@Override
 	public List<Buyer> getAllBuyer() throws AdministratorException, BuyerException {
 		// TODO Auto-generated method stub
-		List<Buyer>  lsb = null;
+		List<Buyer>  lsb = new ArrayList<>();
 		
 		try (Connection conn = DBUtil.provideConnection()){
-			  PreparedStatement  ps =   conn.prepareStatement("select * from Buyers");
+			  PreparedStatement  ps =   conn.prepareStatement("select * from Buyer");
 			  
 		      ResultSet rs =  ps.executeQuery();
 		      

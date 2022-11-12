@@ -54,6 +54,14 @@ public class Buyer {
 	public void setPassword(String password) {
 		this.password = password;
 	}
+
+
+	@Override
+	public String toString() {
+		return "Buyer [bid=" + bid + ", bname=" + bname + ", email=" + email + ", address=" + address + ", password="
+				+ password + "]";
+	}
 	  
 	  
+	
 }

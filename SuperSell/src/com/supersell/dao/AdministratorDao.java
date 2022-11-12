@@ -12,5 +12,5 @@ public interface AdministratorDao {
 	
 	public List<Buyer>  getAllBuyer() throws AdministratorException, BuyerException;
 	
-	
+   
 }
