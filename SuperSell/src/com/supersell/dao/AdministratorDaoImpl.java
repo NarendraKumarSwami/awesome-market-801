@@ -9,7 +9,9 @@ import java.util.List;
 
 import com.supersell.exception.AdministratorException;
 import com.supersell.exception.BuyerException;
+import com.supersell.exception.SellerException;
 import com.supersell.model.Buyer;
+import com.supersell.model.Seller;
 import com.supersell.utility.DBUtil;
 
 public class AdministratorDaoImpl   implements AdministratorDao{
@@ -43,6 +45,30 @@ public class AdministratorDaoImpl   implements AdministratorDao{
 		
 				
 				
+	}
+
+	@Override
+	public List<Seller> getAllSeller() throws AdministratorException, SellerException {
+		// TODO Auto-generated method stub
+		List<Seller>  lss = new ArrayList<>();
+		
+		try (Connection conn = DBUtil.provideConnection()){
+			   PreparedStatement  ps =    conn.prepareStatement("select * from seller");
+			   ResultSet rs =  ps.executeQuery();
+			   
+			   while(rs.next()) {
+				     lss.add(new Seller(rs.getInt("sid"), rs.getString("sname"), rs.getString("semail"), rs.getString("address"), rs.getString("password")));
+			   }
+			   if(lss.size() == 0) {
+				   throw new SellerException("There is no seller");
+			   }
+			     
+		} catch (SQLException e) {
+			// TODO: handle exception
+		     e.printStackTrace();
+		}
+		
+		return lss;
 	}
 
 }
